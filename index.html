@@ -9,16 +9,23 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #111;
-            color: #fff;
             text-align: center;
+            color: #fff;
+            animation: gradientBG 10s infinite alternate;
+            background: linear-gradient(45deg, #111, #222, #333, #444);
+            background-size: 400% 400%;
         }
-        
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
         /* Navbar */
         .navbar {
             display: flex;
             align-items: center;
-            background: #222;
+            background: rgba(0, 0, 0, 0.8);
             padding: 10px;
             justify-content: space-between;
         }
@@ -29,9 +36,9 @@
             border-radius: 50%;
         }
 
-        /* Code display */
+        /* Code Block */
         pre {
-            background: #333;
+            background: #222;
             color: #0f0;
             padding: 15px;
             border-radius: 10px;
@@ -63,21 +70,38 @@
             border-radius: 5px;
         }
 
-        /* FAQ animation */
+        /* FAQ Section */
         .faq {
-            margin: 20px;
+            width: 80%;
+            margin: 20px auto;
         }
 
         .faq-item {
-            background: #222;
-            padding: 10px;
-            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
             cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 0, 0.7);
+            color: #000;
         }
 
         .faq-answer {
             display: none;
             margin-top: 5px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .faq-answer.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -106,15 +130,44 @@
     <!-- Pre Code Block -->
     <h2>Script</h2>
     <pre id="codeBlock">loadstring(game:HttpGet("https://your-exploit-url.com/script.lua"))()</pre>
-    
+
     <!-- Copy Button -->
     <button class="btn" onclick="copyCode()">Copy Code</button>
-    
+
     <!-- FAQ Section -->
     <div class="faq">
+        <h2>FAQ</h2>
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>What is this script?</strong>
+            <strong>1. What is this script?</strong>
             <div class="faq-answer">This is a Roblox exploit script for Ultra Lord Gun Hub.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>2. Is it safe?</strong>
+            <div class="faq-answer">Use at your own risk. Exploiting in Roblox can lead to bans.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>3. Does this work on all games?</strong>
+            <div class="faq-answer">It depends on the game’s anti-cheat system.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>4. How to use this script?</strong>
+            <div class="faq-answer">Use a Roblox exploit tool and paste the script.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>5. Do I need a key?</strong>
+            <div class="faq-answer">No key required for now.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>6. What happens if Roblox updates?</strong>
+            <div class="faq-answer">The script might break, wait for an update.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>7. Can I share this script?</strong>
+            <div class="faq-answer">Yes, but do not modify the credits.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>8. Who made this?</strong>
+            <div class="faq-answer">Ultra Lord Gun SCRIPT Hub created this exploit.</div>
         </div>
     </div>
 
@@ -127,7 +180,13 @@
 
         function toggleFAQ(item) {
             let answer = item.querySelector(".faq-answer");
-            answer.style.display = answer.style.display === "block" ? "none" : "block";
+            if (answer.classList.contains("active")) {
+                answer.classList.remove("active");
+                setTimeout(() => answer.style.display = "none", 500);
+            } else {
+                answer.style.display = "block";
+                setTimeout(() => answer.classList.add("active"), 10);
+            }
         }
     </script>
 

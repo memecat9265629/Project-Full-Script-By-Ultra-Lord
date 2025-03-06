@@ -73,7 +73,7 @@
         <section class="mb-8 text-center">
             <h3 class="text-2xl font-bold">Script</h3>
             <div class="mt-4 p-4 bg-black border-2 border-yellow-500 rounded-lg text-green-500">
-                <pre id="scriptCode">loadstring(game:HttpGet("https://your-exploit-url.com/script.lua"))()</pre>
+                <pre id="scriptCode">loadstring(game:HttpGet("you-code-yes"))()</pre>
             </div>
             <button onclick="copyCode('scriptCode')" class="mt-4 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Code</button>
         </section>
@@ -95,12 +95,7 @@
                 <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">3. How to prevent AFK kick?</p>
                     <div class="faq-answer mt-2">
-                        <pre id="afkScript">while true do
-    wait()
-    game:GetService("Players").LocalPlayer.Idled:Connect(function()
-        game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-    end)
-end</pre>
+                        <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord-gun/refs/heads/main/scripts/Anti-afk-by-ultra-lord-gun-hub"))()</pre>
                         <button onclick="copyCode('afkScript')" class="mt-2 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Anti-AFK Script</button>
                     </div>
                 </div>

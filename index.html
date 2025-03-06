@@ -22,13 +22,16 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Navbar Animation */
+        /* Navbar Styling */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             transition: background-color 0.3s;
         }
 
@@ -45,6 +48,78 @@
         .navbar a:hover {
             background-color: #ff00d4;
             color: #222;
+        }
+
+        /* Navbar Menu Animation */
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle i {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .navbar.open .menu-toggle i {
+            transform: rotate(90deg);
+            transition: transform 0.3s;
+        }
+
+        .navbar.open .navbar-menu {
+            display: block;
+        }
+
+        .navbar-menu a {
+            display: block;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.8);
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar.open .navbar-menu {
+                display: block;
+            }
+
+            .navbar.open .navbar a {
+                display: none;
+            }
+
+            .navbar.open .navbar-menu a {
+                display: block;
+                padding: 10px;
+                width: 100%;
+                background-color: #ff00d4;
+                color: #222;
+                text-align: center;
+                transition: background-color 0.3s;
+            }
+
+            .navbar.open .navbar-menu a:hover {
+                background-color: #ff3d00;
+            }
         }
 
         /* FAQ Animation */
@@ -82,42 +157,6 @@
             word-wrap: break-word;
         }
 
-        /* Navbar menu toggle animation */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-        }
-
-        .menu-toggle i {
-            font-size: 28px;
-        }
-
-        /* Table Header Border Radius */
-        .table-header {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            background-color: #ff6a00;
-            color: white;
-            padding: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar a {
-                display: none;
-                text-align: center;
-                width: 100%;
-                padding: 10px;
-            }
-
-            .navbar.open a {
-                display: block;
-            }
-        }
-
         /* Notification Animation */
         .notification {
             position: fixed;
@@ -142,12 +181,12 @@
 </head>
 <body class="flex flex-col items-center p-4">
     <!-- Navbar with Icon & Menu Animation -->
-    <header class="navbar flex justify-between items-center w-full">
+    <header class="navbar">
         <div class="text-yellow-500 font-bold text-xl">ULTRA LORD SCRIPT HUB</div>
         <div class="menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars text-yellow-500"></i>
+            <i class="fas fa-bars"></i>
         </div>
-        <div class="flex items-center">
+        <div class="navbar-menu">
             <a href="#">Home</a>
             <a href="#features">Features</a>
             <a href="#faq">FAQ</a>
@@ -163,11 +202,11 @@
         <!-- Features Table -->
         <section class="mb-8" id="features">
             <div class="grid grid-cols-2 gap-4 p-4 border-2 border-yellow-500 rounded-lg">
-                <div class="table-header text-center">
-                    <h3 class="text-xl font-bold">Feature</h3>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-yellow-500">Feature</h3>
                 </div>
-                <div class="table-header text-center">
-                    <h3 class="text-xl font-bold">Status</h3>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-yellow-500">Status</h3>
                 </div>
                 <div class="text-center">
                     <p class="text-lg">Exploit 1</p>

@@ -65,7 +65,6 @@
             color: #222;
         }
 
-        /* Navbar Menu Animation */
         .navbar-menu {
             display: flex;
             align-items: center;
@@ -144,19 +143,33 @@
             color: #ff6a00;
         }
 
-        /* Pre Code Outline and Glow */
+        /* Pre Code Border Radius */
         pre {
             max-height: 200px;
             overflow: auto;
             background: #111;
             color: #0f0;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 15px;
             font-size: 14px;
             white-space: pre-wrap;
             word-wrap: break-word;
             outline: 2px solid #ff00d4;
             box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        /* FPS Counter Styling */
+        .fps-counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
         }
 
         /* FAQ Section Style */
@@ -186,16 +199,6 @@
             opacity: 1;
         }
 
-        /* Status Animation */
-        .status {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .status.active {
-            opacity: 1;
-        }
-
         /* Notification Animation */
         .notification {
             position: fixed;
@@ -219,8 +222,12 @@
     </style>
 </head>
 <body class="flex flex-col items-center p-4">
-    <!-- Navbar with Icon & Menu Animation -->
+    <!-- FPS Counter -->
+    <div class="fps-counter" id="fpsCounter">FPS: 0</div>
+
+    <!-- Navbar with Icon Image -->
     <header class="navbar">
+        <img src="https://your-image-url.com/icon.png" alt="Logo" class="w-10 h-10" />
         <div class="text-yellow-500 font-bold text-xl">ULTRA LORD SCRIPT HUB</div>
         <div class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -305,40 +312,46 @@
         </section>
     </main>
 
-    <!-- Notification Animation -->
-    <div id="notification" class="notification">
-        Code Copied to Clipboard!
-    </div>
+    <!-- Notification -->
+    <div id="notification" class="notification">Script Copied!</div>
 
     <script>
-        function copyCode(elementId) {
-            let code = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(code);
-            showNotification();
-        }
+        // FPS Counter Logic
+        let lastTime = 0;
+        let fps = 0;
 
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
+        function updateFPS() {
+            let now = performance.now();
+            fps = Math.round(1000 / (now - lastTime));
+            document.getElementById('fpsCounter').innerText = `FPS: ${fps}`;
+            lastTime = now;
         }
+        setInterval(updateFPS, 100);
 
-        function toggleFAQ(item) {
-            let answer = item.querySelector(".faq-answer");
-            if (answer.classList.contains("active")) {
-                answer.classList.remove("active");
-                setTimeout(() => answer.style.display = "none", 300);
-            } else {
-                answer.style.display = "block";
-                setTimeout(() => answer.classList.add("active"), 10);
-            }
-        }
-
+        // Navbar Menu Toggle
         function toggleMenu() {
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('open');
+            document.querySelector('.navbar').classList.toggle('open');
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(item) {
+            const answer = item.querySelector('.faq-answer');
+            answer.classList.toggle('active');
+        }
+
+        // Copy Code to Clipboard
+        function copyCode(elementId) {
+            const code = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(code);
+            showNotification("Script Copied!");
+        }
+
+        // Show Notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerText = message;
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 2000);
         }
     </script>
 </body>

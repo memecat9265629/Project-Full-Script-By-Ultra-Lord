@@ -50,19 +50,9 @@
             transition: background-color 0.3s;
         }
 
-        .navbar a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            margin: 0 15px;
-            padding: 8px 12px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: #ff00d4;
-            color: #222;
+        .navbar img {
+            width: 50px;
+            height: 50px;
         }
 
         .navbar-menu {
@@ -93,7 +83,10 @@
             display: block;
             padding: 10px;
             width: 100%;
+            background-color: #ff00d4;
+            color: #222;
             text-align: center;
+            transition: background-color 0.3s;
         }
 
         @media (max-width: 768px) {
@@ -158,20 +151,6 @@
             box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
         }
 
-        /* FPS Counter Styling */
-        .fps-counter {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-
         /* FAQ Section Style */
         .faq-item {
             background-color: #222;
@@ -222,12 +201,9 @@
     </style>
 </head>
 <body class="flex flex-col items-center p-4">
-    <!-- FPS Counter -->
-    <div class="fps-counter" id="fpsCounter">FPS: 0</div>
-
-    <!-- Navbar with Icon Image -->
+    <!-- Navbar with Image Icon -->
     <header class="navbar">
-        <img src="https://your-image-url.com/icon.png" alt="Logo" class="w-10 h-10" />
+        <img src="your-icon-path.png" alt="Logo"> <!-- Replace with your icon image path -->
         <div class="text-yellow-500 font-bold text-xl">ULTRA LORD SCRIPT HUB</div>
         <div class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -306,36 +282,23 @@
 
                 <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">6. Does it require a key?</p>
-                    <div class="faq-answer mt-2 text-gray-300">No key required for now.</div>
+                    <div class="faq-answer mt-2 text-gray-300">No, no key required.</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Notification -->
     <div id="notification" class="notification">Script Copied!</div>
 
     <script>
-        // FPS Counter Logic
-        let lastTime = 0;
-        let fps = 0;
-
-        function updateFPS() {
-            let now = performance.now();
-            fps = Math.round(1000 / (now - lastTime));
-            document.getElementById('fpsCounter').innerText = `FPS: ${fps}`;
-            lastTime = now;
-        }
-        setInterval(updateFPS, 100);
-
         // Navbar Menu Toggle
         function toggleMenu() {
             document.querySelector('.navbar').classList.toggle('open');
         }
 
         // FAQ Toggle
-        function toggleFAQ(item) {
-            const answer = item.querySelector('.faq-answer');
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
             answer.classList.toggle('active');
         }
 

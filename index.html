@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Powered by Ultra Lord Gun SCRIPT Hub</title>
     <style>
+        /* Animated Background */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
             color: #fff;
-            animation: gradientBG 10s infinite alternate;
-            background: linear-gradient(45deg, #111, #222, #333, #444);
+            background: linear-gradient(45deg, #0a0a0a, #222, #333, #444);
             background-size: 400% 400%;
+            animation: gradientBG 8s infinite alternate;
         }
 
         @keyframes gradientBG {
@@ -25,25 +26,34 @@
         .navbar {
             display: flex;
             align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px;
             justify-content: space-between;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5);
         }
 
         .navbar img {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+        }
+
+        .navbar-title {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ff0;
         }
 
         /* Code Block */
         pre {
-            background: #222;
+            background: #111;
             color: #0f0;
             padding: 15px;
             border-radius: 10px;
             overflow-x: auto;
             text-align: left;
+            box-shadow: 0 0 10px #ff0;
         }
 
         /* Table */
@@ -51,11 +61,13 @@
             width: 80%;
             margin: auto;
             border-collapse: collapse;
+            background: rgba(255, 255, 0, 0.1);
+            box-shadow: 0 0 10px #ff0;
         }
 
         th, td {
-            border: 2px solid #fff;
-            padding: 10px;
+            border: 2px solid #ff0;
+            padding: 12px;
             border-radius: 10px;
         }
 
@@ -63,11 +75,18 @@
         .btn {
             background: #ff0;
             color: #000;
-            padding: 10px;
-            margin: 5px;
+            padding: 12px;
+            margin: 10px;
             cursor: pointer;
             border: none;
             border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #fff700;
+            transform: scale(1.1);
         }
 
         /* FAQ Section */
@@ -77,17 +96,19 @@
         }
 
         .faq-item {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 10px;
             cursor: pointer;
-            transition: background 0.3s ease-in-out;
+            transition: 0.3s;
+            box-shadow: 0 0 5px #ff0;
         }
 
         .faq-item:hover {
             background: rgba(255, 255, 0, 0.7);
             color: #000;
+            transform: scale(1.05);
         }
 
         .faq-answer {
@@ -109,8 +130,8 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <span>Ultra Lord Gun SCRIPT Hub</span>
-        <img src="https://via.placeholder.com/40" alt="Icon">
+        <span class="navbar-title">Ultra Lord Gun SCRIPT Hub</span>
+        <img src="https://via.placeholder.com/50" alt="Icon">
     </div>
 
     <h1>Ultra LORD GUN SCRIPT HUB</h1>
@@ -130,56 +151,55 @@
     <!-- Pre Code Block -->
     <h2>Script</h2>
     <pre id="codeBlock">loadstring(game:HttpGet("https://your-exploit-url.com/script.lua"))()</pre>
-
-    <!-- Copy Button -->
-    <button class="btn" onclick="copyCode()">Copy Code</button>
+    <button class="btn" onclick="copyCode('codeBlock')">Copy Code</button>
 
     <!-- FAQ Section -->
     <div class="faq">
         <h2>FAQ</h2>
+
         <div class="faq-item" onclick="toggleFAQ(this)">
             <strong>1. What is this script?</strong>
-            <div class="faq-answer">This is a Roblox exploit script for Ultra Lord Gun Hub.</div>
+            <div class="faq-answer">A Roblox exploit script for Ultra Lord Gun Hub.</div>
         </div>
+
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>2. Is it safe?</strong>
-            <div class="faq-answer">Use at your own risk. Exploiting in Roblox can lead to bans.</div>
+            <strong>2. How to use it?</strong>
+            <div class="faq-answer">Paste it into a Roblox executor.</div>
         </div>
+
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>3. Does this work on all games?</strong>
-            <div class="faq-answer">It depends on the game’s anti-cheat system.</div>
+            <strong>3. Will I get banned?</strong>
+            <div class="faq-answer">Use at your own risk, exploiting can result in bans.</div>
         </div>
+
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>4. How to use this script?</strong>
-            <div class="faq-answer">Use a Roblox exploit tool and paste the script.</div>
+            <strong>4. Does it work for all games?</strong>
+            <div class="faq-answer">Depends on the game’s anti-cheat system.</div>
         </div>
+
         <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>5. Do I need a key?</strong>
-            <div class="faq-answer">No key required for now.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>6. What happens if Roblox updates?</strong>
-            <div class="faq-answer">The script might break, wait for an update.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>7. Can I share this script?</strong>
-            <div class="faq-answer">Yes, but do not modify the credits.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>8. Who made this?</strong>
-            <div class="faq-answer">Ultra Lord Gun SCRIPT Hub created this exploit.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFAQ(this)">
-            <strong>9. Help! How can I prevent AFK kick?</strong>
+            <strong>5. How to prevent AFK kick?</strong>
             <div class="faq-answer">
-                <pre>while true do wait() game:GetService("Players").LocalPlayer.Idled:Connect(function() game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame) end) end</pre>
+                <pre id="afkScript">while true do wait() game:GetService("Players").LocalPlayer.Idled:Connect(function() game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame) end) end</pre>
+                <button class="btn" onclick="copyCode('afkScript')">Copy Anti-AFK Script</button>
             </div>
         </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>6. Does it require a key?</strong>
+            <div class="faq-answer">No key is required for now.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <strong>7. Who made this?</strong>
+            <div class="faq-answer">Ultra Lord Gun SCRIPT Hub.</div>
+        </div>
+
     </div>
 
     <script>
-        function copyCode() {
-            let code = document.getElementById("codeBlock").innerText;
+        function copyCode(elementId) {
+            let code = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(code);
             alert("Copied!");
         }

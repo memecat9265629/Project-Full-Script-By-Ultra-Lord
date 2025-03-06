@@ -7,10 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        /* Gradient Background Animation */
         body {
-            background-color: #222;
+            background: linear-gradient(45deg, #ff6a00, #ff3d00, #ff00d4, #8e2de2, #4a00e0);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
             color: #fff;
             font-family: Arial, sans-serif;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* FAQ Animation */
@@ -22,6 +31,16 @@
 
         .faq-answer.active {
             display: block;
+            opacity: 1;
+        }
+
+        /* Status Animation */
+        .status {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .status.active {
             opacity: 1;
         }
 
@@ -63,7 +82,7 @@
                 <div class="text-center">
                     <p class="text-lg">Exploit 1</p>
                 </div>
-                <div class="text-center">
+                <div class="text-center status active">
                     <p class="text-lg text-green-500"><i class="fas fa-check-square"></i> Working</p>
                 </div>
             </div>
@@ -76,6 +95,18 @@
                 <pre id="scriptCode">loadstring(game:HttpGet("you-code-yes"))()</pre>
             </div>
             <button onclick="copyCode('scriptCode')" class="mt-4 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Code</button>
+        </section>
+
+        <!-- Update Logs Section -->
+        <section class="mb-8 text-center">
+            <h3 class="text-2xl font-bold">Update Logs</h3>
+            <div class="mt-4 p-4 bg-black border-2 border-yellow-500 rounded-lg text-gray-300">
+                <ul>
+                    <li>v2.0: Enhanced Script Features</li>
+                    <li>v2.1: Fixed minor bugs</li>
+                    <li>v2.2: Added Gradient Background Animation</li>
+                </ul>
+            </div>
         </section>
 
         <!-- FAQ Section -->
@@ -95,7 +126,7 @@
                 <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">3. How to prevent AFK kick?</p>
                     <div class="faq-answer mt-2">
-                        <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord-gun/refs/heads/main/scripts/Anti-afk-by-ultra-lord-hub"))()</pre>
+                        <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord/refs/heads/main/scripts/Anti-afk-by-ultra-lord-hub"))()</pre>
                         <button onclick="copyCode('afkScript')" class="mt-2 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Anti-AFK Script</button>
                     </div>
                 </div>

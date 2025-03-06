@@ -22,6 +22,21 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Glowing Gradient Animation for Title */
+        .glowing-title {
+            background-image: linear-gradient(45deg, #ff6a00, #ff3d00, #ff00d4, #8e2de2);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 2.5rem;
+            font-weight: bold;
+            animation: glowingText 3s infinite alternate;
+        }
+
+        @keyframes glowingText {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 0, 255, 1); }
+        }
+
         /* Navbar Styling */
         .navbar {
             position: sticky;
@@ -122,7 +137,44 @@
             }
         }
 
-        /* FAQ Animation */
+        /* Table Header Border Radius */
+        .table-header {
+            border-radius: 10px 10px 0 0;
+            background-color: #111;
+            color: #ff6a00;
+        }
+
+        /* Pre Code Outline and Glow */
+        pre {
+            max-height: 200px;
+            overflow: auto;
+            background: #111;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            outline: 2px solid #ff00d4;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        /* FAQ Section Style */
+        .faq-item {
+            background-color: #222;
+            border: 2px solid #ff00d4;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: #ff00d4;
+            color: #222;
+        }
+
         .faq-answer {
             display: none;
             opacity: 0;
@@ -142,19 +194,6 @@
 
         .status.active {
             opacity: 1;
-        }
-
-        /* Fix Pre Code Scrolling */
-        pre {
-            max-height: 200px;
-            overflow: auto;
-            background: #111;
-            color: #0f0;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
         }
 
         /* Notification Animation */
@@ -194,18 +233,18 @@
     </header>
 
     <main class="w-full max-w-2xl mt-8">
-        <!-- Title Section -->
+        <!-- Title Section with Glowing Animation -->
         <section class="text-center mb-8">
-            <h2 class="text-3xl font-bold">Ultra LORD SCRIPT HUB</h2>
+            <h2 class="glowing-title">Ultra LORD SCRIPT HUB</h2>
         </section>
 
         <!-- Features Table -->
         <section class="mb-8" id="features">
             <div class="grid grid-cols-2 gap-4 p-4 border-2 border-yellow-500 rounded-lg">
-                <div class="text-center">
+                <div class="table-header text-center">
                     <h3 class="text-xl font-bold text-yellow-500">Feature</h3>
                 </div>
-                <div class="text-center">
+                <div class="table-header text-center">
                     <h3 class="text-xl font-bold text-yellow-500">Status</h3>
                 </div>
                 <div class="text-center">
@@ -226,21 +265,21 @@
             <button onclick="copyCode('scriptCode')" class="mt-4 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Code</button>
         </section>
 
-        <!-- FAQ Section -->
+        <!-- FAQ Section with Beta Styling -->
         <section class="mb-8" id="faq">
             <h3 class="text-2xl font-bold text-center">FAQ</h3>
             <div class="mt-4 space-y-4">
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
+                <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">1. What is this script?</p>
                     <div class="faq-answer mt-2 text-gray-300">A Roblox exploit script for Ultra Lord Gun Hub.</div>
                 </div>
 
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
+                <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">2. How to use it?</p>
                     <div class="faq-answer mt-2 text-gray-300">Paste it into a Roblox executor and run it.</div>
                 </div>
 
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
+                <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">3. How to prevent AFK kick?</p>
                     <div class="faq-answer mt-2">
                         <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord-gun/refs/heads/main/scripts/Anti-afk-by-ultra-lord-hub"))()</pre>
@@ -248,17 +287,17 @@
                     </div>
                 </div>
 
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
+                <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">4. Will I get banned?</p>
                     <div class="faq-answer mt-2 text-gray-300">Use at your own risk. Exploiting in Roblox can lead to bans.</div>
                 </div>
 
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
+                <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">5. Does it work for all games?</p>
                     <div class="faq-answer mt-2 text-gray-300">Depends on the game’s anti-cheat system.</div>
                 </div>
 
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
+                <div class="faq-item" onclick="toggleFAQ(this)">
                     <p class="text-lg">6. Does it require a key?</p>
                     <div class="faq-answer mt-2 text-gray-300">No key required for now.</div>
                 </div>

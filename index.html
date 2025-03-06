@@ -22,32 +22,36 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* FAQ Border Radius with Gradient */
-        .faq-item {
-            background-image: linear-gradient(45deg, #ff00d4, #8e2de2, #4a00e0);
-            background-origin: border-box;
-            background-clip: content-box;
-            border: 3px solid transparent;
-            border-radius: 20px; /* Rounded corners for FAQ items */
-            padding: 15px;
-            margin: 10px 0;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            cursor: pointer;
+        /* Navbar Animation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            transition: background-color 0.3s;
         }
 
-        .faq-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
+        .navbar a:hover {
+            background-color: #ff00d4;
+            color: #222;
+        }
+
+        /* FAQ Animation */
         .faq-answer {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            background: #222;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 10px;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .faq-answer.active {
@@ -67,46 +71,87 @@
 
         /* Fix Pre Code Scrolling */
         pre {
-            max-height: 200px; /* Limit height to prevent overflow */
+            max-height: 200px;
             overflow: auto;
             background: #111;
             color: #0f0;
             padding: 10px;
             border-radius: 5px;
             font-size: 14px;
-            white-space: pre-wrap; /* Wrap long lines */
+            white-space: pre-wrap;
             word-wrap: break-word;
         }
 
-        /* Notification Styling */
+        /* Navbar menu toggle animation */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle i {
+            font-size: 28px;
+        }
+
+        /* Table Header Border Radius */
+        .table-header {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: #ff6a00;
+            color: white;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar a {
+                display: none;
+                text-align: center;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .navbar.open a {
+                display: block;
+            }
+        }
+
+        /* Notification Animation */
         .notification {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4CAF50;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff00d4;
             color: white;
             padding: 15px;
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            z-index: 1000;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .notification.show {
             opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
 <body class="flex flex-col items-center p-4">
-    <!-- Notification Section -->
-    <div id="notification" class="notification">
-        Code copied to clipboard!
-    </div>
-
-    <!-- Header -->
-    <header class="w-full bg-black text-yellow-500 text-center py-4">
-        <h1 class="text-2xl font-bold">ULTRA LORD SCRIPT HUB</h1>
+    <!-- Navbar with Icon & Menu Animation -->
+    <header class="navbar flex justify-between items-center w-full">
+        <div class="text-yellow-500 font-bold text-xl">ULTRA LORD SCRIPT HUB</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars text-yellow-500"></i>
+        </div>
+        <div class="flex items-center">
+            <a href="#">Home</a>
+            <a href="#features">Features</a>
+            <a href="#faq">FAQ</a>
+        </div>
     </header>
 
     <main class="w-full max-w-2xl mt-8">
@@ -115,26 +160,20 @@
             <h2 class="text-3xl font-bold">Ultra LORD SCRIPT HUB</h2>
         </section>
 
-        <!-- Features Table with Update Log -->
-        <section class="mb-8">
-            <div class="grid grid-cols-3 gap-4 p-4 border-2 border-yellow-500 rounded-lg">
-                <div class="text-center">
-                    <h3 class="text-xl font-bold text-yellow-500">Feature</h3>
+        <!-- Features Table -->
+        <section class="mb-8" id="features">
+            <div class="grid grid-cols-2 gap-4 p-4 border-2 border-yellow-500 rounded-lg">
+                <div class="table-header text-center">
+                    <h3 class="text-xl font-bold">Feature</h3>
                 </div>
-                <div class="text-center">
-                    <h3 class="text-xl font-bold text-yellow-500">Status</h3>
-                </div>
-                <div class="text-center">
-                    <h3 class="text-xl font-bold text-yellow-500">Update Log</h3>
+                <div class="table-header text-center">
+                    <h3 class="text-xl font-bold">Status</h3>
                 </div>
                 <div class="text-center">
                     <p class="text-lg">Exploit 1</p>
                 </div>
                 <div class="text-center status active">
                     <p class="text-lg text-green-500"><i class="fas fa-check-square"></i> Working</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-lg">Added new exploit feature and improved performance.</p>
                 </div>
             </div>
         </section>
@@ -148,21 +187,21 @@
             <button onclick="copyCode('scriptCode')" class="mt-4 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Code</button>
         </section>
 
-        <!-- FAQ Section with Gradient Border Radius -->
-        <section class="mb-8">
+        <!-- FAQ Section -->
+        <section class="mb-8" id="faq">
             <h3 class="text-2xl font-bold text-center">FAQ</h3>
             <div class="mt-4 space-y-4">
-                <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">1. What is this script?</p>
                     <div class="faq-answer mt-2 text-gray-300">A Roblox exploit script for Ultra Lord Gun Hub.</div>
                 </div>
 
-                <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">2. How to use it?</p>
                     <div class="faq-answer mt-2 text-gray-300">Paste it into a Roblox executor and run it.</div>
                 </div>
 
-                <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">3. How to prevent AFK kick?</p>
                     <div class="faq-answer mt-2">
                         <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord-gun/refs/heads/main/scripts/Anti-afk-by-ultra-lord-hub"))()</pre>
@@ -170,17 +209,17 @@
                     </div>
                 </div>
 
-                <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">4. Will I get banned?</p>
                     <div class="faq-answer mt-2 text-gray-300">Use at your own risk. Exploiting in Roblox can lead to bans.</div>
                 </div>
 
-                <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">5. Does it work for all games?</p>
                     <div class="faq-answer mt-2 text-gray-300">Depends on the game’s anti-cheat system.</div>
                 </div>
 
-                <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">6. Does it require a key?</p>
                     <div class="faq-answer mt-2 text-gray-300">No key required for now.</div>
                 </div>
@@ -188,20 +227,24 @@
         </section>
     </main>
 
+    <!-- Notification Animation -->
+    <div id="notification" class="notification">
+        Code Copied to Clipboard!
+    </div>
+
     <script>
         function copyCode(elementId) {
             let code = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(code);
-            showNotification("Code copied to clipboard!");
+            showNotification();
         }
 
-        function showNotification(message) {
-            const notification = document.getElementById("notification");
-            notification.textContent = message;
-            notification.classList.add("show");
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
             setTimeout(() => {
-                notification.classList.remove("show");
-            }, 3000); // Notification stays visible for 3 seconds
+                notification.classList.remove('show');
+            }, 3000);
         }
 
         function toggleFAQ(item) {
@@ -214,7 +257,11 @@
                 setTimeout(() => answer.classList.add("active"), 10);
             }
         }
-    </script>
 
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>

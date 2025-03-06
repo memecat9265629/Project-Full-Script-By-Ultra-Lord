@@ -24,6 +24,19 @@
             display: block;
             opacity: 1;
         }
+
+        /* Fix Pre Code Scrolling */
+        pre {
+            max-height: 200px; /* Limit height to prevent overflow */
+            overflow: auto;
+            background: #111;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: pre-wrap; /* Wrap long lines */
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center p-4">
@@ -60,7 +73,7 @@
         <section class="mb-8 text-center">
             <h3 class="text-2xl font-bold">Script</h3>
             <div class="mt-4 p-4 bg-black border-2 border-yellow-500 rounded-lg text-green-500">
-                <code id="scriptCode">loadstring(game:HttpGet("https://your-exploit-url.com/script.lua"))()</code>
+                <pre id="scriptCode">loadstring(game:HttpGet("https://your-exploit-url.com/script.lua"))()</pre>
             </div>
             <button onclick="copyCode('scriptCode')" class="mt-4 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Code</button>
         </section>
@@ -82,7 +95,12 @@
                 <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">3. How to prevent AFK kick?</p>
                     <div class="faq-answer mt-2">
-                        <pre id="afkScript" class="p-3 bg-gray-800 rounded text-green-400 text-sm overflow-x-auto">while true do wait() game:GetService("Players").LocalPlayer.Idled:Connect(function() game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame) end) end</pre>
+                        <pre id="afkScript">while true do
+    wait()
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end</pre>
                         <button onclick="copyCode('afkScript')" class="mt-2 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Anti-AFK Script</button>
                     </div>
                 </div>
@@ -100,16 +118,6 @@
                 <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">6. Does it require a key?</p>
                     <div class="faq-answer mt-2 text-gray-300">No key required for now.</div>
-                </div>
-
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
-                    <p class="text-lg">7. Who made this?</p>
-                    <div class="faq-answer mt-2 text-gray-300">Ultra Lord Gun SCRIPT Hub.</div>
-                </div>
-
-                <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
-                    <p class="text-lg">8. Can I use it on mobile?</p>
-                    <div class="faq-answer mt-2 text-gray-300">No, it requires a PC executor.</div>
                 </div>
             </div>
         </section>

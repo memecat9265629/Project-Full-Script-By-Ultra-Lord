@@ -22,11 +22,14 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* FAQ Animation */
+        /* FAQ Gradient Animation */
         .faq-answer {
             display: none;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
+            background: linear-gradient(45deg, #ff00d4, #8e2de2, #4a00e0);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
         }
 
         .faq-answer.active {
@@ -56,9 +59,33 @@
             white-space: pre-wrap; /* Wrap long lines */
             word-wrap: break-word;
         }
+
+        /* Notification Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center p-4">
+    <!-- Notification Section -->
+    <div id="notification" class="notification">
+        Code copied to clipboard!
+    </div>
+
     <!-- Header -->
     <header class="w-full bg-black text-yellow-500 text-center py-4">
         <h1 class="text-2xl font-bold">ULTRA LORD SCRIPT HUB</h1>
@@ -97,19 +124,7 @@
             <button onclick="copyCode('scriptCode')" class="mt-4 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Code</button>
         </section>
 
-        <!-- Update Logs Section -->
-        <section class="mb-8 text-center">
-            <h3 class="text-2xl font-bold">Update Logs</h3>
-            <div class="mt-4 p-4 bg-black border-2 border-yellow-500 rounded-lg text-gray-300">
-                <ul>
-                    <li>v2.0: Enhanced Script Features</li>
-                    <li>v2.1: Fixed minor bugs</li>
-                    <li>v2.2: Added Gradient Background Animation</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
+        <!-- FAQ Section with Gradient Animation -->
         <section class="mb-8">
             <h3 class="text-2xl font-bold text-center">FAQ</h3>
             <div class="mt-4 space-y-4">
@@ -126,7 +141,7 @@
                 <div class="p-4 bg-black border-2 border-yellow-500 rounded-lg cursor-pointer" onclick="toggleFAQ(this)">
                     <p class="text-lg">3. How to prevent AFK kick?</p>
                     <div class="faq-answer mt-2">
-                        <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord/refs/heads/main/scripts/Anti-afk-by-ultra-lord-hub"))()</pre>
+                        <pre id="afkScript">loadstring(game:HttpGet("https://raw.githubusercontent.com/memecat9265629/Project-Full-Script-By-Ultra-Lord-gun/refs/heads/main/scripts/Anti-afk-by-ultra-lord-hub"))()</pre>
                         <button onclick="copyCode('afkScript')" class="mt-2 px-4 py-2 font-bold bg-yellow-500 text-black rounded-lg">Copy Anti-AFK Script</button>
                     </div>
                 </div>
@@ -153,7 +168,16 @@
         function copyCode(elementId) {
             let code = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(code);
-            alert("Copied!");
+            showNotification("Code copied to clipboard!");
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.classList.add("show");
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000); // Notification stays visible for 3 seconds
         }
 
         function toggleFAQ(item) {

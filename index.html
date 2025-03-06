@@ -22,35 +22,37 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* FAQ Gradient Animation */
+        /* FAQ Border Radius with Gradient */
+        .faq-item {
+            background-image: linear-gradient(45deg, #ff00d4, #8e2de2, #4a00e0);
+            background-origin: border-box;
+            background-clip: content-box;
+            border: 3px solid transparent;
+            border-radius: 20px; /* Rounded corners for FAQ items */
+            padding: 15px;
+            margin: 10px 0;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
         .faq-answer {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
-            background: linear-gradient(45deg, #ff00d4, #8e2de2, #4a00e0);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
+            transition: opacity 0.5s ease-in-out;
+            background: #222;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
         }
 
         .faq-answer.active {
             display: block;
             opacity: 1;
-        }
-
-        /* FAQ Border Gradient with Radius */
-        .faq-item {
-            border: 3px solid transparent;
-            border-radius: 15px;
-            background-image: linear-gradient(45deg, #ff00d4, #8e2de2, #4a00e0);
-            background-origin: border-box;
-            background-clip: content-box;
-            padding: 15px;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .faq-item:hover {
-            transform: scale(1.05);
         }
 
         /* Status Animation */
